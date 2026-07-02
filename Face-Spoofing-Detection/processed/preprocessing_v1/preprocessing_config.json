@@ -1,0 +1,20 @@
+{
+  "project_root": "C:\\kaggle\\data-analytics-competition-dac-find-it-2026\\kurt\\findit\\ver34_clean_package",
+  "raw_root": "C:\\kaggle\\data-analytics-competition-dac-find-it-2026\\kurt\\findit\\ver34_clean_package\\raw",
+  "processed_root": "C:\\kaggle\\data-analytics-competition-dac-find-it-2026\\kurt\\findit\\ver34_clean_package\\processed\\preprocessing_v1",
+  "output_size": 320,
+  "pad_color": [
+    114,
+    114,
+    114
+  ],
+  "seed": 42,
+  "train_augments_per_class": {
+    "realperson": 0,
+    "fake_unknown": 0,
+    "fake_mask": 1,
+    "fake_screen": 1,
+    "fake_mannequin": 1,
+    "fake_printed": 2
+  }
+}

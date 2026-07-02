@@ -1,0 +1,7 @@
+{
+  "head_name": "msd_linear",
+  "best_epoch": 5,
+  "best_val_macro_f1": 0.972598784696595,
+  "final_val_macro_f1": 0.972598784696595,
+  "final_val_accuracy": 0.9816176470588235
+}

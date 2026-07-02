@@ -1,0 +1,2 @@
+head_name,best_epoch,best_val_macro_f1,final_val_macro_f1,final_val_accuracy
+msd_linear,5,0.972598784696595,0.972598784696595,0.9816176470588235
