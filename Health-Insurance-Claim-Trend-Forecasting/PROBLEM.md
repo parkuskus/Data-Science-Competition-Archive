@@ -1,88 +1,112 @@
-Dataset Description
-Dataset terdiri dari 4096 data polis asuransi kesehatan dan 5781 data klaim asuransi kesehatan yang terjadi pada periode 1 Januari 2024 s/d 31 Juli 2025
-Terdapat 5 informasi yang diberikan terkait data polis, yaitu: nomor polis, plancode, gender, tanggal lahir, tanggal efektif polis, dan domisili, dan terdapat 13 informasi yang diberikan terkait data klaim asuransi kesehatan, yaitu: claim ID, nomor polis, reimburse/cashless, inpatient/outpatient, ICD Diagnosis, ICD Description, status klaim, tanggal pembayaran, tanggal pasien masuk RS, tanggal pasien keluar RS, nominal klaim yang disetujui, nominal biaya RS yang terjadi, dan lokasi RS.
-Berkas Data
+# Health Insurance Claim Trend Forecasting
 
-* `Data_Klaim.csv` – Data transaksi klaim asuransi kesehatan hingga periode 2025-07-31.
-* `Data_Polis.csv` – Data induk yang berisi informasi seluruh polis aktif.
-* `sample_submission.csv` – Berkas contoh format pengumpulan (submisi) hasil prediksi/analisa.
-Deskripsi Kolom
-1. `Data_Klaim.csv`
-Daftar kolom yang tersedia pada data transaksi klaim:
+## Overview
 
-* Claim ID: Identifikasi unik untuk setiap klaim asuransi kesehatan yang diajukan oleh tertanggung.
-* Nomor Polis: Nomor identitas unik dari polis asuransi milik tertanggung.
-* Reimburse/Cashless: Metode penyelesaian klaim; baik melalui sistem ganti rugi (reimburse) maupun tanpa tunai (cashless).
-* Inpatient/Outpatient: Kategori perawatan; Rawat Inap (Inpatient) atau Rawat Jalan (Outpatient).
-* ICD Diagnosis: Kode klasifikasi penyakit berdasarkan International Statistical Classification of Diseases and Related Health Problems Revision. Analisa dapat menggunakan kode spesifik (contoh: `H26.9`) atau pengelompokan umum (contoh: `H26`).
-* ICD Description: Deskripsi medis atau penjelasan mengenai diagnosis berdasarkan kode ICD terkait.
-* Status Klaim: Status pemrosesan klaim (`Paid` = Klaim telah dibayarkan, `Pending` = Klaim dalam proses verifikasi).
-* Tanggal Pembayaran Klaim: Tanggal ketika dana klaim dicairkan kepada nasabah atau pihak RS.
-* Tanggal Pasien Masuk RS: Tanggal dimulainya perawatan medis di rumah sakit.
-* Tanggal Pasien Keluar RS: Tanggal selesainya perawatan medis (kepulangan) dari rumah sakit.
-* Nominal Klaim Yang Disetujui: Nilai nominal biaya kesehatan yang disetujui untuk dibayarkan oleh perusahaan asuransi.
-* Nominal Biaya RS Yang Terjadi: Total tagihan biaya rumah sakit yang diajukan oleh nasabah.
-* Lokasi RS: Letak geografis atau wilayah tempat rumah sakit berada.
-2. `Data_Polis.csv`
-Daftar kolom yang tersedia pada data profil polis nasabah:
+Individual health insurance is a tool for mitigating personal financial risk from unexpected events such as illness or accidents, which can potentially cause significant costs and impact personal financial planning.
 
-* Nomor Polis: Nomor identitas unik yang menghubungkan data polis dengan data klaim.
-* Plan Code: Kode produk yang menentukan cakupan wilayah pertanggungan:
-* `M-001`: Wilayah pertanggungan Seluruh Dunia (Worldwide).
-* `M-002`: Wilayah pertanggungan regional Asia.
-* `M-003`: Wilayah pertanggungan domestik Indonesia.
-* Gender: Jenis kelamin pemegang polis/tertanggung.
-* Tanggal Lahir: Tanggal lahir tertanggung (digunakan untuk kalkulasi usia).
-* Tanggal Efektif Polis: Tanggal awal mulai berlakunya proteksi asuransi kesehatan.
-* Domisili: Wilayah tempat tinggal atau alamat resmi tertanggung.
+In recent years, one of the key issues has been the increase in individual health insurance claims, with a **25.5% increase** between January–June 2025 compared to the same period in 2024. This increase impacts premium adjustments, potentially making individual health insurance products less affordable. Therefore, data-driven analysis is needed to predict the factors most influential to claim values, enabling initiatives in risk selection, prevention, and early detection to minimize the impact of rising claims and maintain affordable premiums.
 
-Overview
-Produk asuransi kesehatan individu merupakan salah satu alat untuk mitigasi resiko finansial individu dari kejadian tidak terduga seperti penyakit atau kecelakaan, yang berpotensi menimbulkan biaya besar dan berdampak ke perencaan keuangan pribadi.
-Salah satu isu yang terjadi beberapa tahun terakhir ini, adalah terkait peningkatan klaim asuransi kesehatan individu, dimana terjadi kenaikan sebesar 25.5% antara periode Januari – Juni 2025 jika dibandingkan periode yang sama di tahun 2024. Adapun peningkatan klaim tersebut akan berdampak ke penyesuaian premi yang berpotensi mengakibatkan harga premi produk asuransi kesehatan individu menjadi lebih tidak terjangkau. Oleh karena itu, diperlukan analisa berbasis data untuk memprediksi faktor-faktor yang paling berpengaruh terhadap nilai klaim, sehingga dapat dilakukan inisiatif baik dari segi seleksi resiko, pencegahan, ataupun deteksi dini untuk meminimalisir dampak peningkatan klaim guna menjaga harga premi yang terjangkau
-Pada DSC MCF ITB, untuk komponen penilaian skor Kaggle, peserta ditantang untuk membangun model prediktif yang mampu memprediksi trend frekuensi, trend severitas, dan tren total claim. untuk periode Agustus hingga Desember 2025.
-Start
-Feb 14, 2026
-Close
-Mar 15, 2026
-Submission
-Peserta diwajibkan untuk mengirimkan file prediksi melalui kaggle dalam format .CSV dengan struktur sebagai berikut:
+## Problem Statement
 
-```asciidoc
-id, value
+Participants are challenged to build a predictive model that can forecast three key metrics for **August to December 2025**:
+
+1. **Claim Frequency** — Number of claims per month
+2. **Claim Severity** — Average claim amount per month
+3. **Total Claim** — Frequency × Severity per month
+
+## Timeline
+
+| Milestone | Date |
+|-----------|------|
+| Competition Start | Feb 14, 2026 |
+| Competition End | Mar 15, 2026 |
+
+## Dataset Description
+
+The dataset consists of **4,096 insurance policy data** and **5,781 health insurance claims** for the period January 1, 2024 to July 31, 2025.
+
+### Files
+
+| File | Description |
+|------|-------------|
+| `Data_Klaim.csv` | Health insurance claim transactions up to 2025-07-31 |
+| `Data_Polis.csv` | Master data containing all active policies |
+| `sample_submission.csv` | Example submission format |
+
+### Data_Klaim.csv — Claim Transactions
+
+| Column | Description |
+|--------|-------------|
+| Claim ID | Unique identifier for each health insurance claim |
+| Nomor Polis | Unique policy number of the insured |
+| Reimburse/Cashless | Claim settlement method (R = Reimburse, C = Cashless) |
+| Inpatient/Outpatient | Care category (IP = Inpatient, OP = Outpatient) |
+| ICD Diagnosis | ICD classification code (e.g., `H26.9`) |
+| ICD Description | Medical description based on ICD code |
+| Status Klaim | Claim processing status (`Paid` or `Pending`) |
+| Tanggal Pembayaran Klaim | Date when funds were disbursed |
+| Tanggal Pasien Masuk RS | Hospital admission date |
+| Tanggal Pasien Keluar RS | Hospital discharge date |
+| Nominal Klaim Yang Disetujui | Approved claim amount |
+| Nominal Biaya RS Yang Terjadi | Total hospital bill submitted |
+| Lokasi RS | Hospital location |
+
+### Data_Polis.csv — Policy Data
+
+| Column | Description |
+|--------|-------------|
+| Nomor Polis | Unique policy number |
+| Plan Code | Product code determining coverage region |
+| Gender | Policyholder gender |
+| Tanggal Lahir | Policyholder birth date |
+| Tanggal Efektif Polis | Policy effective date |
+| Domisili | Policyholder domicile |
+
+#### Plan Code Coverage
+
+| Code | Coverage |
+|------|----------|
+| M-001 | Worldwide |
+| M-002 | Regional Asia |
+| M-003 | Domestic Indonesia |
+
+## Evaluation
+
+### Metric: Mean Absolute Percentage Error (MAPE)
+
+MAPE is chosen because it focuses on the percentage error relative to actual values, not absolute error. This is highly suitable for insurance business needs that care about prediction accuracy proportions, not just nominal differences.
+
+### Scoring Calculation
+
+1. Calculate MAPE for **Frequency** predictions
+2. Calculate MAPE for **Severity** predictions
+3. Calculate MAPE for **Total** predictions
+4. **Final Score** = Average of the three MAPE values
+
+By calculating MAPE separately for frequency, severity, and total claims, this scoring system encourages participants to build models that are accurate across all aspects, not just focused on one component.
+
+## Leaderboard
+
+Ranking is based on MAPE, where **lower scores achieve higher rankings**.
+
+| Leaderboard | Description |
+|-------------|-------------|
+| Public | Based on 40% of test data (visible during competition) |
+| Private | Based on 60% of test data (final ranking) |
+
+**Final Score**: 100% Private Leaderboard
+
+## Submission Format
+
+```csv
+id,value
 2025_08_Claim_Frequency,0
 2025_08_Claim_Severity,0
 2025_08_Total_Claim,0
 2025_09_Claim_Frequency,0
 ...
-
 ```
 
-Evaluation
-Metrik yang digunakan untuk mengevaluasi performa model pada kompetisi Kaggle ini adalah Mean Absolute Percentage Error (MAPE):
-
-
-Perhitungan Skor Akhir
-Skor akhir dihitung dengan langkah-langkah berikut:
-
-1. Hitung MAPE untuk prediksi Frekuensi: 
-
-2. Hitung MAPE untuk prediksi Severitas: 
-
-3. Hitung MAPE untuk prediksi Total: 
-
-4. Skor Akhir:
-
-Mape dipilih karena MAPE fokus pada persentase kesalahan relatif terhadap nilai aktual, bukan error absolut. Ini sangat sesuai dengan kebutuhan bisnis asuransi yang peduli pada akurasi proporsi prediksi, bukan hanya selisih nominal. Selain itu, dengan menghitung MAPE secara terpisah untuk frekuensi, severitas, dan total klaim, sistem penilaian ini mendorong peserta untuk membangun model yang akurat di semua aspek, bukan hanya fokus pada satu komponen saja.
-Leaderboard
-Peringkat dalam kompetisi ini akan didasarkan pada Mean Absolute Percentage Error, di mana skor yang lebih rendah akan mendapatkan peringkat lebih tinggi. Leaderboard akan terdiri dari dua fase:
-Public Leaderboard Dihitung berdasarkan sebagian dari data uji (40%) dan akan terlihat sepanjang kompetisi. Ini memberikan gambaran sementara tentang performa model peserta selama kompetisi berlangsung.
-Private Leaderboard Dihitung berdasarkan sisa data uji (60%) dan akan digunakan untuk menentukan peringkat akhir di akhir kompetisi.
-Pembobotan Peringkat akhir akan ditentukan berdasarkan Private Leaderboard dengan bobot sebagai berikut:
-
-```fortran
-Final Submission Score = 100% Private
-```
-
-
-
-berikan judul singkat dari permasalahan saya
+Each row contains:
+- `id` — Metric identifier in format `YYYY_MM_Metric_Name`
+- `value` — Predicted value
