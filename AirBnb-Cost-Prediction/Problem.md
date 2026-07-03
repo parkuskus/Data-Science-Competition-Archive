@@ -1,33 +1,34 @@
 # Airbnb Cost Prediction - Problem Statement
 
 ## Overview
+**Source**: BukitVista
 
-Seiring berkembangnya industri penyewaan akomodasi jangka pendek secara global, memprediksi harga sewa properti dengan akurat menjadi tantangan penting bagi pemilik properti, platform digital, dan peneliti pasar. Kompetisi Prediksi Harga Sewa Airbnb ini memberikan kesempatan bagi peserta untuk menganalisis berbagai faktor yang memengaruhi penentuan harga listing di berbagai kota dunia.
+As the short-term rental accommodation industry grows globally, accurately predicting property rental prices has become a significant challenge for property owners, digital platforms, and market researchers. This Airbnb Rental Price Prediction competition provides an opportunity for participants to analyze various factors influencing listing prices across cities worldwide.
 
 ## Problem Statement
-Penentuan harga sewa yang tepat memiliki dampak ekonomi yang signifikan — baik bagi pemilik properti yang ingin memaksimalkan pendapatan, maupun bagi platform yang ingin menjaga daya saing dan kepuasan pengguna.
+Setting the right rental price has significant economic impact — both for property owners looking to maximize revenue and for platforms aiming to maintain competitiveness and user satisfaction.
 
-Peserta ditantang untuk mengembangkan model prediktif yang mampu memperkirakan harga sewa per malam berdasarkan data historis dan atribut listing, termasuk:
-- Tipe properti dan kapasitas akomodasi
-- Lokasi geografis
-- Atribut host
-- Data ulasan dan ketersediaan
+Participants are challenged to develop a predictive model capable of estimating nightly rental prices based on historical data and listing attributes, including:
+- Property type and accommodation capacity
+- Geographic location
+- Host attributes
+- Review and availability data
 
 ## Goals
-- Mengasah keterampilan membangun model prediksi harga yang akurat dan aplikatif
-- Berkontribusi dalam pemahaman mendalam mengenai mekanisme pasar sewa akomodasi
-- Menekankan pentingnya pengambilan keputusan berbasis data dalam mengelola portofolio properti
+- Hone skills in building accurate and applicable price prediction models
+- Contribute to deeper understanding of rental market dynamics
+- Emphasize data-driven decision making in property portfolio management
 
 ## Timeline
 - **Start**: Jul 26, 2025
 - **Close**: Aug 2, 2025
 
 ## Evaluation
-**Metrik**: Root Mean Squared Error (RMSE)
+**Metric**: Root Mean Squared Error (RMSE)
 
 $$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$
 
-RMSE dipilih karena memberikan penalti lebih besar pada kesalahan prediksi yang besar, sehingga mendorong model yang tidak hanya akurat secara rata-rata, tetapi juga stabil pada berbagai rentang harga.
+RMSE is chosen because it imposes larger penalties on bigger prediction errors, encouraging models that are not only accurate on average but also stable across various price ranges.
 
 ```python
 import numpy as np
@@ -46,9 +47,9 @@ Muhammad Fathur Rizky. SPARTA 2024 Data Science Competition. https://kaggle.com/
 ### Files
 | File | Description |
 |------|-------------|
-| `train.csv` | 300,000 listings dengan semua fitur dan target (`price`) |
-| `test.csv` | 100,000 listings tanpa target — prediksi `price` |
-| `sample_submission.csv` | Template submisi |
+| `train.csv` | 300,000 listings with all features and target (`price`) |
+| `test.csv` | 100,000 listings without target — predict `price` |
+| `sample_submission.csv` | Submission template |
 
 ### Key Columns
 

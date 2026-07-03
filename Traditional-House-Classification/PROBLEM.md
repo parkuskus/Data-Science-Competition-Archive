@@ -1,27 +1,27 @@
 # Traditional House Classification - Problem Statement
 
 ## Overview
-Semakin berkurangnya pengetahuan generasi muda tentang rumah adat membuat upaya pelestarian budaya semakin penting. Kompetisi ini mengajak peserta membangun model klasifikasi untuk mengenali berbagai rumah adat Nusantara dari ribuan citra dengan variasi pencahayaan, sudut pandang, dan kualitas gambar.
+As the younger generation's knowledge of traditional houses diminishes, cultural preservation efforts become increasingly important. This competition invites participants to build a classification model capable of recognizing various traditional houses from across Indonesia. The dataset contains thousands of traditional house images from different regions with variations in lighting, viewing angles, and image quality. By applying data science techniques, participants can gain new insights into the visual patterns of Nusantara architecture while contributing to the digitalization and preservation of the nation's cultural heritage.
 
 ## Objective
-Kurangnya pengetahuan rumah adat Nusantara berisiko menghilangkan identitas budaya dan warisan arsitektur. Peserta diharapkan membangun model yang mengklasifikasikan gambar ke kategori rumah adat yang tepat dengan akurasi dan generalisasi tinggi.
+Lack of knowledge about Nusantara traditional houses risks losing cultural identity and valuable architectural heritage. In this competition, participants are expected to build a model that can classify each image into the correct traditional house category with high accuracy and generalization.
 
 ## Goals
-- Mengasah keterampilan data science, khususnya computer vision
-- Berkontribusi pada pelestarian budaya Nusantara melalui pengenalan dan dokumentasi arsitektur tradisional
-- Menekankan pemanfaatan teknologi berbasis data untuk pelestarian warisan budaya di era digital
+- Hone skills in data science, particularly computer vision
+- Contribute to the preservation of Nusantara culture through recognition and documentation of traditional architecture
+- Emphasize the utilization of data-driven technology to support cultural heritage preservation in the digital era
 
 ## Timeline
 - **Start**: Sep 21, 2025
 - **Close**: Oct 11, 2025
 
 ## Evaluation
-Submisi dinilai berdasarkan **Macro F1-Score** (rata-rata F1-Score per kelas).
+Submissions are evaluated based on **Macro F1-Score**, which represents the average F1-Score per class.
 
-Dipilih karena dataset memiliki distribusi kelas tidak seimbang. Macro F1-Score memberikan bobot sama pada setiap kelas, mendorong model berperforma baik di semua kategori.
+This metric is chosen because the dataset has a highly imbalanced class distribution, making regular accuracy misleading. Macro F1-Score addresses this by giving equal weight to each class, encouraging the model to perform well across all traditional house categories.
 
 ## Submission Format
-File CSV dengan format:
+CSV file with the following format:
 ```csv
 id,style
 Test_001,balinese
@@ -29,18 +29,19 @@ Test_002,minangkabau
 Test_003,javanese
 ...
 ```
-Sesuai `sample_submission.csv` yang disediakan.
+Must match the provided `sample_submission.csv` format.
 
 ## Dataset Description
-Setiap gambar memiliki label kategori rumah adat sebagai target klasifikasi.
+Each image in the dataset is labeled with its traditional house category, used as the target for image classification.
 
-### Kategori:
-| Label | Deskripsi |
-|-------|-----------|
-| **Javanese** | Rumah tradisional Jawa (Joglo, Kraton) |
-| **Balinese** | Rumah tradisional Bali, termasuk area pura |
-| **Minangkabau** | Rumah Gadang, Sumatera Barat |
-| **Batak** | Rumah Bolon, Sumatera Utara |
-| **Dayak** | Rumah panjang, masyarakat Dayak, Kalimantan |
+### Categories:
 
-Label terstruktur memudahkan pelatihan model image classification sekaligus mengenal keragaman arsitektur tradisional Indonesia.
+| Label | Description |
+|-------|-------------|
+| **Javanese** | Javanese traditional houses (Joglo, Kraton) |
+| **Balinese** | Balinese traditional houses, including temple areas |
+| **Minangkabau** | Rumah Gadang from West Sumatra |
+| **Batak** | Rumah Bolon from North Sumatra |
+| **Dayak** | Longhouses of the Dayak people in Kalimantan |
+
+The clear and structured labels make it easier to train and test image classification models while introducing the diversity of Indonesian traditional architecture.
