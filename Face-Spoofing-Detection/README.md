@@ -47,7 +47,7 @@ The pipeline uses a **DINOv3 ViT-Large** backbone with a **Multi-Sample Dropout 
 
 ## Pipeline Diagram
 
-![Pipeline Diagram](artifact/pipeline-diagram.png)
+![Pipeline Diagram](artifact/pipeline-diagram.jpg)
 
 ---
 
