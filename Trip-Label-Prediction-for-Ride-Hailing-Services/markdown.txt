@@ -1,0 +1,25 @@
+1. Trip_ID: ID unik yang mewakili setiap perjalanan.
+2. Timestamp: Waktu pemesanan perjalanan (format ISO-8601).
+3. Pickup_Lat: Koordinat latitude lokasi penjemputan.
+4. Pickup_Long: Koordinat longitude lokasi penjemputan.
+5. Dropoff_Lat: Koordinat latitude lokasi tujuan.
+6. Dropoff_Long: Koordinat longitude lokasi tujuan.
+7. GPS_Accuracy_M: Tingkat akurasi GPS saat perjalanan (meter).
+8. Distance_KM: Jarak tempuh perjalanan (km).
+9. Est_Price_IDR: Estimasi harga perjalanan (Rupiah).
+10. Surge_Multiplier: Faktor pengali harga pada periode permintaan tinggi.
+11. Accel_X: Data rata-rata sensor accelerometer sumbu X (m/s²).
+12. Accel_Y: Data rata-rata sensor accelerometer sumbu Y (m/s²).
+13. Accel_Z: Data rata-rata sensor accelerometer sumbu Z (m/s²).
+14. Gyro_Z: Data sensor gyroscope yang menangkap pergerakan rotasional kendaraan.
+15. Pickup_Zone: Nama zona administratif lokasi penjemputan.
+16. Dropoff_Zone: Nama zona administratif lokasi tujuan.
+17. Device_FP: Informasi perangkat yang digunakan mitra pengemudi.
+18. Promo_Code: Kode voucher promosi yang digunakan.
+19. Car_Model: Informasi model kendaraan yang digunakan mitra pengemudi.
+20. Payment_Method: Metode pembayaran yang dipakai dalam transaksi.
+21. Weather: Kondisi cuaca saat perjalanan.
+22. Traffic: Kondisi lalu lintas selama perjalanan.
+23. Battery_Level: Persentase baterai perangkat saat order dibuat (%).
+24. Signal_Strength: Jenis jaringan seluler yang aktif saat perjalanan.
+25. Trip_Label: Label klasifikasi perjalanan.
